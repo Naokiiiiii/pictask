@@ -1,0 +1,15 @@
+<div class="contents row">
+  <%= form_tag('/tasks', method: :post) do %>
+    <h3>
+      投稿する
+    </h3>
+    <input placeholder="買うor売る" type="text" name="trade">
+    <input placeholder="商品名" type="text" name="goods">
+    <input placeholder="名前" type="text" name="name">
+    <input placeholder="受取場所" type="text" name="where">
+    <input placeholder="日時" type="text" name="when">
+    <input placeholder="価格" type="text" name="price">
+    <textarea cols="30" name="about" placeholder="詳細" rows="10"></textarea>
+    <input type="submit" value="SENT">
+  <% end %>
+</div>
