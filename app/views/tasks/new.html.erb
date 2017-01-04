@@ -1,6 +1,8 @@
 <div class="contents row">
   <%= form_tag('/tasks', method: :post) do %>
-    <h3>
+  <%= hidden_field_tag(:user_id, current_user.id) %>
+  <%= hidden_field_tag(:group_id, current_user.group.id) %>
+  <h3>
       投稿する
     </h3>
     <input placeholder="買うor売る" type="text" name="trade">

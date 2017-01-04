@@ -1,0 +1,44 @@
+<div class ="contents row">
+    <% if user_signed_in? && current_user.id == @task.user_id %>
+      <div class="more">
+        <span><%= image_tag 'arrow_top.png' %></span>
+      <ul class="more_list">
+        <li>
+          <%= link_to '編集', "/tasks/#{@task.id}/edit", method: :get %>
+        </li>
+        <li>
+          <%= link_to '削除', "/tasks/#{@task.id}", method: :delete %>
+        </li>
+      </ul>
+    </div>
+    <% end %>
+    <%= simple_format(@task.about) %>
+      <p><%= @task.goods%></p>
+      <p><%= @task.name%></p>
+      <p><%= @task.where%></p>
+      <p><%= @task.when%></p>
+      <p><%= @task.price%></p>
+      <p><%= @task.about%></p>
+    <span class="name">
+      <a href="/users/<%= @task.user.id %>">
+        <span>投稿者</span><%= @task.user.nickname %>
+      </a>
+<%= form_tag tasks_cash_path do %>
+  <article>
+    <% if flash[:error].present? %>
+      <div id="error_explanation">
+        <p><%= flash[:error] %></p>
+      </div>
+    <% end %>
+    <label class="amount">
+      <span>Amount: $5.00</span>
+    </label>
+  </article>
+  <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+          data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+          data-description="A month's subscription"
+          data-amount="500"
+          data-locale="auto"></script>
+<% end %>
+    </span>
+</div>

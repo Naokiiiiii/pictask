@@ -1,0 +1,10 @@
+  <div class="contents row" >
+    <p><%= @nickname %>さんの投稿一覧</p>
+    <% @tasks.each do |task| %>
+      <div class="content_post" style=
+        <%= simple_format(task.about) %>
+        <span class="name"><%= task.name %></span>
+      </div>
+    <% end %>
+    <%= paginate(@tasks) %>
+  </div>
