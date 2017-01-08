@@ -9,7 +9,7 @@ class CreateTasks < ActiveRecord::Migration
         t.integer     :price
         t.text        :about
         t.timestamps
-        rename_column :tasks,:Goods, :goods
+        # rename_column :tasks,:Goods, :goods
 end
     end
   end
