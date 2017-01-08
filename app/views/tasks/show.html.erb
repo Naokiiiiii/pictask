@@ -13,11 +13,10 @@
     </div>
     <% end %>
     <%= simple_format(@task.about) %>
-      <p><%= @task.goods%></p>
-      <p><%= @task.name%></p>
-      <p><%= @task.where%></p>
-      <p><%= @task.when%></p>
-      <p><%= @task.price%></p>
+      <p>名前：<%= @task.name%></p>
+      <p>商品名：<%= @task.goods%></p>
+      <p>受取場所：<%= @task.where%></p>
+      <p>日時：<%= @task.when%></p>
       <p><%= @task.about%></p>
     <span class="name">
       <a href="/users/<%= @task.user.id %>">
@@ -31,13 +30,13 @@
       </div>
     <% end %>
     <label class="amount">
-      <span>Amount: $5.00</span>
+      <span>価格: <%=@task.price%>円</span>
     </label>
   </article>
   <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
           data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
           data-description="A month's subscription"
-          data-amount="500"
+          data-amount="<%=@price%>"
           data-locale="auto"></script>
 <% end %>
     </span>

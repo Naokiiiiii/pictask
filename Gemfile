@@ -52,3 +52,11 @@ end
   gem  'kaminari'
   gem 'stripe'
   gem 'devise'
+  gem 'carrierwave'
+
+group :production, :staging do
+  gem 'rails_12factor'
+end
+
+gem 'mysql2', '0.3.18'
+

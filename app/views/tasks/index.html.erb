@@ -1,356 +1,55 @@
-<!DOCTYPE html>
-<!--[if IE 7]>
-<html class="ie ie7" lang="ja">
-<![endif]-->
-<!--[if IE 8]>
-<html class="ie ie8" lang="ja">
-<![endif]-->
-<!--[if !(IE 7) | !(IE 8)  ]><!-->
-<html lang="ja">
-<!--<![endif]-->
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<title>Pictask</title>
-<link rel='stylesheet' href='css/style.css' type='text/css' media='all' />
-<link rel='stylesheet' href='css/style.css' type='text/css' media='all' />
-<!--[if lt IE 9]>
-<script src="js/html5shiv-printshiv.js"></script>
-<![endif]-->
-</head>
-
-<body>
-  <header>
-      <div id="header_inner" class="clearfix">
-      <!-- ＜ロゴ＞ -->
-          <!-- <h1 class="fl pt10 pb15"><img src="images/title_main.png" alt="Pictask" width="188" height="62"></h1>
-            <ul class="fr clearfix pt20">
-              <li class="fr"><a href=""><%= image_tag 'button_01.png',alt:"ログイン" , width: "198" , height: "41" %></a></li>
-            </ul> -->
-        </div><!--/#header_inner-->
-    </header>
-
-    <section id="slide">
+<section id="slide">
         <h2>
-          <%= image_tag 'many.jpg', class: 'picture'%>
+        近くにいる友達、同僚に、助けをお願い出来る掲示板サービス"Pictask"<br>
+緊急な依頼（財布忘れた！過去問欲しい！等）にぜひご活用下さい
         </h2>
     </section>
 
-    <section id="cont_1">
-      <div class="title_area">
-          <div class="inner_title">
-                <h2><img src="images/title_01.png" alt="Pictaskについて" width="246" height="112"></h2>
-              </div>
-
-      </div>
-
-            <div class="contents_area">
-              <div class="inner_contents clearfix pt10">
-                  <div class="cont_1_box">
-                    <!-- <p class="mb10"><%= image_tag 'img_01.png', width: "300" , height: "275" %> ></p> -->
-                    <p class="mb20 tex14">同じ職場や学校の人に助けをもとめることが出来ます。</p>
-                    </div>
-
-                    <div class="cont_1_box_02">
-                    <!-- <p class="mb10"><%= image_tag 'img_01.png', width: "300" , height: "275" %> ></p> -->
-                    <p class="mb20 tex14">
-                    ちょっとした忘れ物をしたときなど、すぐに近くいる人から助けを求めることが出来ます。</p>
-                    </div>
-                    <div class="cont_1_box_03">
-                    <!-- <p class="mb10"><%= image_tag 'img_01.png', width: "300" , height: "275" %> ></p> -->
-                    <p class="mb20 tex14">同僚を助けてあげることで、お小遣いゲット！！</p>
-                    </div>
-
-                </div><!--.inner_contents-->
-            </div><!--.contents_area-->
-    </section>
 
     <section id="cont_2">
       <div class="title_area">
         <div class="inner_title">
-              <!-- <h2><img src="images/title_02.png" alt="安心・安全のタクシブ" width="310" height="112"></h2> -->
-            </div><!--.inner_title-->
-    </div><!--.title_area-->
+            </div>
+    </div>
 
             <div class="contents_area">
               <div class="inner_contents">
-                  <p><%= image_tag 'img_cont2.png', width: "957" , height: "291" %> ></p>
-                  <!-- <img src="images/img_cont2.png" width="957" height="291"></p> -->
-                </div><!--.inner_contents-->
-            </div><!--.contents_area-->
-    </section> <!--/#cont_2-->
+              <div class="inner_picture">
+                  <span class="inner_pic"><%= image_tag 'img_04.png', width: "320" , height: "320" %> </span>
+                  <span><%= image_tag 'img_06.png', width: "320" , height: "320" %> </span>
+                </div>
+                </div>
+            </div>
+    </section>
 
     <section id="cont_3">
       <div class="title_area">
         <div class="inner_title">
-              <h2><%= image_tag 'title_03.png', width: "178" , height: "110" , alt: "人気の投稿"%></p>
-              <div class="task_contents clearfix">
+        <h2>
+        売りたいもの＆買いたいもの<br>
+        </h2>
+        <div class="task_contents clearfix">
         <!-- ##ここからは貸し借りの一覧が表示されます。 -->
         <% @tasks.each do |task| %>
+        <%= link_to(task_path(task.id), class: 'task_content') do%>
         <div class="task_content">
-          <div class="trade"><%= task.trade%></div>
-          <%= image_tag 'title_03.png', width: "50" , height: "50" , alt: "人気の投稿"%>
-          <%= image_tag 'title_03.png', width: "50" , height: "50" , alt: "人気の投稿"%>
-          <%= image_tag 'title_03.png', width: "50" , height: "50" , alt: "人気の投稿"%>
-          <p><%= task.goods%></p>
-          <p><%= task.name%></p>
-          <p><%= task.where%></p>
-          <p><%= task.when%></p>
-          <p><%= task.price%></p>
-          <p><%= task.about%></p>
-          <%= link_to '詳細', task_path(task.id)%>
+        <span>名前：<%= task.name%></span>
+        <span class="time">日時：<%= task.when%></span><br />
+          <span>商品名：<%= task.goods%></span>
+          <span class="place">受取場所：<%= task.where%></span>
+          <span class ="trade2"><%= task.trade%></span>
+          <span class ="show">価格：<%= task.price%>円</span>
           </div>
+          <% end%>
           <% end %>
           </div>
 
-
-
-              <!-- <img src="images/title_03.png" alt="人気の投稿" width="178" height="110"></h2> -->
-<!-- <!-- <!--                 <p class="tab_01"><img src="images/button_tokyo_on.png" alt="東京" width="263" height="77"></p>
-                <p class="tab_02"><img src="images/button_osaka_off.png" alt="大阪" width="263" height="77"></p>
-            </div><!--.inner_title-->
-    </div><!--.title_area-->
-
-<!--             <div class="contents_area">
-              <div class="inner_contents">
-                  <div class="clearfix">
-                  <div class="cont_3_box pr30">
-                      <div class="baloon_02">
-                          <p class="tex16 pl15"><span>35</span>%<br><span class="tex22 fineindent">OFF</span></p>
-                        </div>
-                    <ul>
-                      <li><img src="images/sample_img.png" width="289" height="102"></li>
-                      <li class="li_st01 clearfix">
-                              <div class="from fl">
-                                  <p>横浜都内</p>
-                                </div>
-                                <p class="fl pt10"><img src="images/img_center.png"></p>
-                                <div class="to fl">
-                                  <p>東京ディズニーランド<br>東京ディズニーシー</p>
-                                </div>
-                             </li>
-                      <li class="li_st02 clearfix">
-                          <div class="fl">
-                             <p class="tex18 bold mt10">料金<span class="tex24">¥</span><span class="big">3,280</span></p>
-                          </div>
-                          <div class="blue_box fl">
-                             <p>通常運賃<br><span class="bold">約¥9,000</span></p>
-                          </div>
-                      </li>
-                      <li class="li_st02 price02">
-                        <p>4<span class="tex20">人で乗れば…</span><img src="images/icon_one.png" alt="１人" width="46" height="40"><span class="tex20">¥</span>820</p>
-                      </li>
-                    </ul>
-
-                    </div><!--.cont_3_box-->
-
-<!-- <!--                     <div class="cont_3_box pr30">
-                      <div class="baloon_02">
-                          <p class="tex16 pl15"><span>35</span>%<br><span class="tex22 fineindent">OFF</span></p>
-                        </div>
-
-                    <ul>
-                      <li><img src="images/sample_img.png" width="289" height="102"></li>
-                      <li class="li_st01 clearfix">
-                              <div class="from fl">
-                                  <p>横浜都内</p>
-                                </div>
-                                <p class="fl pt10"><img src="images/img_center.png"></p>
-                                <div class="to fl">
-                                  <p class="normal">東京ディズニーランド<br>東京ディズニーシー</p>
-                                </div>
-                             </li>
-                      <li class="li_st02 clearfix">
-                                <div class="fl">
-                                   <p class="tex18 bold mt10">料金<span class="tex24">¥</span><span class="big">3,280</span></p>
-                                </div>
-                                <div class="blue_box fl">
-                                   <p class="normal">通常運賃<br><span class="bold">約¥9,000</span></p>
-                                </div>
-                            </li>
-                      <li class="li_st02 price02">
-                        <p>4<span class="tex20">人で乗れば…</span><img src="images/icon_one.png" alt="１人" width="46" height="40"><span class="tex20">¥</span>820</p>
-                      </li>
-                    </ul>
-
-                    </div><!--.cont_3_box-->
-
- <!--                    <div class="cont_3_box">
-                      <div class="baloon_03">
-                          <p class="tex16 pl15"><span>35</span>%<br><span class="tex22 fineindent">OFF</span></p>
-                        </div> -->
-
- <!--                    <ul>
-                      <li><img src="images/sample_img.png" width="289" height="102"></li>
-                      <li class="li_st01 clearfix">
-                              <div class="from fl">
-                                  <p>横浜都内</p>
-                                </div>
-                                <p class="fl pt10"><img src="images/img_center.png"></p>
-                                <div class="to fl">
-                                  <p>東京ディズニーランド<br>東京ディズニーシー</p>
-                                </div> -->
- <!--                             </li>
-                      <li class="li_st02 clearfix">
-                                <div class="fl">
-                                    <p class="tex18 bold mt10">料金<span class="tex24">¥</span><span class="big">3,280</span></p>
-                                </div>
-                                <div class="blue_box fl">
-                                   <p class="normal">通常運賃<br><span class="bold">約¥9,000</span></p>
-                                </div>
-                            </li>
-                      <li class="li_st02 price02">
-                        <p>4<span class="tex20">人で乗れば…</span><img src="images/icon_one.png" alt="１人" width="46" height="40"><span class="tex20">¥</span>820</p>
-                      </li>
-                    </ul> -->
-<!-- <!-- 
-                    </div><!--.cont_3_box-->
-                  </div><!--.clearfix-->
-
-<!--                     <div class="cont_3_bottom clearfix">
-                      <p class="fl"><img src="images/sub_title_01.png" alt="掲載外の料金もお調べいただけます！いつもの運賃と比べてみてください！" width="530" height="65"></p>
-                        <p class="fr"><a href=""><img class="rollover-op" src="images/button_04.png" alt="料金の検索をする" width="385" height="76"></a></p>
-                    </div><!--.cont_3_bottom clearfix-->
-
-<!--                    <p class="ar"><a href="#header_inner"><img class="rollover-op" src="images/to_top.png" alt="TOP" width="50" height="92"></a></p> -->
-                </div><!--.inner_contents-->
-            </div><!--.contents_area-->
-    </section> <!--/#cont_3-->
-
-    <section id="cont_4">
+    <footer>
+        <section id="cont_4">
       <div class="title_area">
         <div class="inner_title">
               <h3 class="mb10"><%= image_tag 'title_04.png', width: "245" , height: "19",alt: "みんははじめているよ！" %>
-
-<!--               <img src="images/title_04.png" alt="みんなはじめているよ！" width="245" height="19"></h3>
- -->
-
-<!--               <div class="fb_area">
-                   <div class="fb-like-box" data-href="http://www.facebook.com/FacebookDevelopers" data-width="954px" data-colorscheme="light" data-show-faces="true" data-header="false" data-stream="false" data-show-border="true"></div> -->
-                </div><!--.fb_area-->
-            </div><!--.inner_title-->
-        </div><!--.title_area-->
-    </section> <!--/#cont_4-->
-
-    <footer>
-<!--         <div class="inner_footer">
-          <div class="clearfix">
-          <ul class="pt30 pb40 clearfix fl">
-            <li class="fl pr20"><a href="">お問い合わせ</a></li>
-            <li class="fl pr20 pl20"><a href="">運営会社</a></li>
-            <li class="fl pr20 pl20"><a href="">利用規約</a></li>
-            <li class="fl pr20 pl20"><a href="">個人情報保護方針</a></li>
-            <li class="fl pr20 pl20"><a href="">旅行業約款</a></li>
-            <li class="fl pr20 pl20" style="border-style:none;"><a href="">特別保証規定</a></li>
-          </ul>
-         <!-- <!--    <p class="fr pt30"><img src="images/title_footer.png" width="145" height="48" alt="TAXiV"></p>
-          </div><!--.clearfix-->
-<!--             <p class="pt20 pb40"><small><img src="images/fotter_copyright.png" alt="Copyright (c) 2013 logiclin, Inc. All Rights Reserved." width="315" height="15"></small></p>
-</div> -->
+              </div>
+              </div>
     </footer>
-</body>
-</html>
 
-
-
-
-
-
-
-
-
-
-
-
-  <div class="contents clearfix">
-    <!-- <header id='picture_header'> -->
-    <!-- <%= image_tag 'many.jpg', class: 'picture'%> -->
-      <div class="header_part"></div>
-<!--       <h1>Pictask</h1>
-      <div>ボタン挿入箇所、検索バー、もしくはここを投稿ボタンとかにしても良さそう。</div> -->
-    </header>
-
-    <div class="explain_content">
-<!--       <div class="explain_title">
-        <h2>Pictaskについて</h2>
-        <div id="detail">
-          <p>
-            pictaskとは貸し借りのサイトです
-            サイト説明などを記入する部分
-            高さ横幅などはアレンジしてください
-          </p>
-        </div>
-      </div> -->
-<!--       <div class="task_contents clearfix">
-        ##ここからは貸し借りの一覧が表示されます。
-        <% @tasks.each do |task| %>
-        <div class="task_content">
-          <div class="trade"><%= task.trade%></div>
-          <p><%= task.goods%></p>
-          <p><%= task.name%></p>
-          <p><%= task.where%></p>
-          <p><%= task.when%></p>
-          <p><%= task.price%></p>
-          <p><%= task.about%></p>
-          <%= link_to '詳細', task_path(task.id)%>
-        </div>
-       <!--  <div class="task_content">
-          <p><%= task.where%></p>
-        </div>
-        <div class="task_content">
-          <p><%= task.when%></p>
-        </div>
-        <div class="task_content">
-          <p><%= task.price%></p>
-        </div>
-        <div class="task_content">
-          <p><%= task.about%></p>
-        </div> -->
-<!--         <% end %>
-      </div>
-    </div>  -->
-    <!--     <footer id="mainFooter" class="clearfix">
-      <p>C 2014 we-b inc.</p>
-    </footer>
- -->
-
-
-
-
-
-
-
-
-
-
-<!--
-
-
-
-
-
-  <div class="contents row" >
-    <% @tasks.each do |task| %>
-    <div class="task_content">
-      <p><%= task.trade%></p>
-    </div>
-    <div class="task_content">
-      <p><%= task.goods%></p>
-    </div>
-    <div class="task_content">
-      <p><%= task.name%></p>
-    </div>
-    <div class="task_content">
-      <p><%= task.where%></p>
-    </div>
-    <div class="task_content">
-      <p><%= task.when%></p>
-    </div>
-    <div class="task_content">
-      <p><%= task.price%></p>
-    </div>
-    <div class="task_content">
-      <p><%= task.about%></p>
-    </div>
-    <% end %>
-  </div>
- -->

@@ -14,10 +14,11 @@ class TasksController < ApplicationController
 
   def show
     @task = Task.find(params[:id])
+    @price = @task.price
   end
 
   def cash
-  @amount = 500#引き落とす金額
+  @amount = params[:amount]
  ###この操作で、Stripe から帰ってきた情報を取得します
   customer = Stripe::Customer.create(
     :email => params[:stripeEmail], #emailは暗号化されずに受け取れます
