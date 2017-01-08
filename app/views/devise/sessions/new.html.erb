@@ -2,8 +2,7 @@
     <h2>Log in</h2>
 
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-    <%= devise_error_messages! %>
-
+    <%= content_tag(:div, flash[:alert], :id => "flash_alert") if flash[:alert] %>
       <div class="field">
         <%= f.label :email %><br />
         <%= f.email_field :email, autofocus: true %>
@@ -14,15 +13,11 @@
         <%= f.password_field :password, autocomplete: "off" %>
       </div>
 
-      <% if devise_mapping.rememberable? -%>
-        <div class="field">
-          <%= f.label :remember_me %><br />
-          <%= f.check_box :remember_me %>
-        </div>
-      <% end -%>
+      <%= f.collection_select :group_id, Group.all, :id, :name %>
+
 
       <div class="actions">
-        <%= f.submit "Log in" %>
+        <%= f.submit "Sign in" %>
       </div>
     <% end %>
   </div>
