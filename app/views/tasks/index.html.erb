@@ -29,27 +29,26 @@
         売りたいもの＆買いたいもの<br>
         </h2>
         <div class="task_contents clearfix">
-        <!-- ##ここからは貸し借りの一覧が表示されます。 -->
-        <% @tasks.each do |task| %>
-        <%= link_to(task_path(task.id), class: 'task_content') do%>
-        <div class="task_content">
-        <span>名前：<%= task.name%></span>
-        <span class="time">日時：<%= task.when%></span><br />
-          <span>商品名：<%= task.goods%></span>
-          <span class="place">受取場所：<%= task.where%></span>
-          <span class ="trade2"><%= task.trade%></span>
-          <span class ="show">価格：<%= task.price%>円</span>
-          </div>
-          <% end%>
+          <% @tasks.each do |task| %>
+            <%= link_to(task_path(task.id), class: 'task_content') do%>
+              <div class="task_content">
+                <span>名前：<%= task.name%></span>
+                <span class="time">日時：<%= task.when%></span><br />
+                <span>商品名：<%= task.goods%></span>
+                <span class="place">受取場所：<%= task.where%></span>
+                <span class ="trade2"><%= task.trade%></span>
+                <span class ="show">価格：<%= task.price%>円</span>
+               </div>
+            <% end%>
           <% end %>
-          </div>
+        </div>
 
     <footer>
-        <section id="cont_4">
-      <div class="title_area">
-        <div class="inner_title">
-              <h3 class="mb10"><%= image_tag 'title_04.png', width: "245" , height: "19",alt: "みんははじめているよ！" %>
-              </div>
-              </div>
+      <section id="cont_4">
+        <div class="title_area">
+          <div class="inner_title">
+            <h3 class="mb10"><%= image_tag 'title_04.png', width: "245" , height: "19",alt: "みんははじめているよ！" %>
+          </div>
+        </div>
     </footer>
 

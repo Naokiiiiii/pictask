@@ -12,7 +12,7 @@
       </ul>
     </div>
     <% end %>
-    <%= simple_format(@task.about) %>
+    <div class="fomat">
       <p>名前：<%= @task.name%></p>
       <p>商品名：<%= @task.goods%></p>
       <p>受取場所：<%= @task.where%></p>
@@ -39,5 +39,6 @@
           data-amount="<%=@price%>"
           data-locale="auto"></script>
 <% end %>
+</div>
     </span>
 </div>
